@@ -1,5 +1,5 @@
 class Solution:
-    def numIdenticalPairs(self, nums: List[int]) -> int:
+    def numIdenticalPairs(self, nums: list[int]) -> int:
         good_pairs = []
         for i in range(len(nums)):
             for j in range(len(nums)):
