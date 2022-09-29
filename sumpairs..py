@@ -1,37 +1,21 @@
-from re import A
-
-
-A = [3,1,3,4,3]
-A.sort()
-l =[]
-k = 6
-y = set()
-operation = 0
-i = 0
-j = len(A) -1 
-while (i < j):
-    if A[i] + A[j] == k:
-           print(A[i])
-           A.remove(A[i])
-           A.remove(A[j])
-    i +=1
-    j -=1   
-
-# for i in range(len(n)):
-#     for j in range(i,len(n)):
-#          if i == j:
-#              continue
+class Solution:
+    def maxOperations(self, nums: List[int], k: int) -> int:
         
-#          else:
-#             if n[i]+n[j] == k: 
-                       
-#                 operation+=1
-#                 n.remove(n[i])
-#                 n.remove(n[j])
-                
-               
+        nums.sort()
+        operation = 0
+        to_right = 0
+        to_left = len(nums)-1
+      
+        while to_right < to_left:
+            if nums[to_right] +nums[to_left]<k:
 
-        
-# print(y)               
-print(A)
-print(operation)
+                to_right+=1
+            elif nums[to_right] +nums[to_left]==k:
+                operation +=1
+                to_right+=1
+                to_left-=1
+         
+          
+            else:
+                to_left-=1
+        return operation
