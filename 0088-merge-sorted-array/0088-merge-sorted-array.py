@@ -4,7 +4,7 @@ class Solution:
         Do not return anything, modify nums1 in-place instead.
         """
         
-        i = m + n - 1
+        i = len(nums1) - 1
         m = m-1
         n = n-1
         while n >= 0 and m >= 0:
