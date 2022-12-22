@@ -2,10 +2,8 @@ class Solution:
     def average(self, salary: List[int]) -> float:
         tot = sum(salary)
         count = len(salary) - 2
-        
-        minimum = min(salary)
-        maximum = max(salary)
-        tot -= (minimum+maximum)  
+       
+        tot -= (min(salary) + max(salary))  
         
         return tot/count
             
