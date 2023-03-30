@@ -8,23 +8,27 @@ class Solution:
             mid = (start + end)//2
             left_half = mergesort(start,mid,arr)
             right_half = mergesort(mid + 1,end,arr)
+            
+            for num in right_half:
+                binarysearch(num,left_half)
                 
             return merge(left_half,right_half)
         
         def binarysearch(num,arr):
+            nonlocal ans
+            
             low = 0
             high = len(arr) - 1
             
             while low <= high:
-                mid = low + (high-low)//2
-                if num + diff >= arr[mid]:
+                mid = (low+high)//2
+                
+                if num + diff >= arr[mid] :
                     low = mid + 1
                 else:
                     high = mid - 1
-                    
-            if low == 0 and high < 0:
-                return -1
-            return low
+
+            ans += low
          
         def merge(arr1,arr2):
             nonlocal ans
@@ -32,11 +36,6 @@ class Solution:
             new_arr = []
             i = 0
             j = 0
-            
-            for num in arr2:
-                temp = binarysearch(num,arr1)
-                if temp != -1:
-                    ans += temp
                     
             while i < len(arr1) and j < len(arr2):
                 if arr1[i] < arr2[j]:
