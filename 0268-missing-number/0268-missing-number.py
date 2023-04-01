@@ -1,6 +1,5 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
-        ans = len(nums)
         nums.append(-1)
         
         i = 0
@@ -10,7 +9,6 @@ class Solution:
                 
             else:
                 nums[nums[i]], nums[i] = nums[i], nums[nums[i]]
-                if nums[i] == -1 or nums[nums[i]] == -1:
-                    ans = i
+
+        return nums.index(-1)
               
-        return ans
