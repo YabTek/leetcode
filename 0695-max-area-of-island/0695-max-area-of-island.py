@@ -12,14 +12,14 @@ class Solution:
         def dfs(i,j): 
             if not inBound(i,j) or grid[i][j] != 1:
                 return 0
+            cur = 1
             if inBound(i,j) and grid[i][j] == 1:
                 grid[i][j] = "visited"
-                return 1 + dfs(i+1,j)+dfs(i-1,j)+dfs(i,j+1)+dfs(i,j-1)
+                return cur + dfs(i+1,j)+dfs(i-1,j)+dfs(i,j+1)+dfs(i,j-1)
                 
         for i in range(n):
             for j in range(m):
                 if grid[i][j] == 1:
-                    temp = 0
                     ans = max(ans,dfs(i,j))
                     
         return ans
