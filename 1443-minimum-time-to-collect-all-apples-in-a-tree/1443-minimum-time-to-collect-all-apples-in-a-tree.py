@@ -9,16 +9,16 @@ class Solution:
             
         def dfs(node):
             
-            time = 0 
+            ans = 0 
             visited.add(node)
             
             for neighbour in graph[node]:
                 if neighbour not in visited:
-                    temp = dfs(neighbour)
-                    if temp or hasApple[neighbour]:
-                        time += temp + 2
+                    time = dfs(neighbour)
+                    if time or hasApple[neighbour]:
+                        ans += time + 2
                         
-            return time
+            return ans
                     
         return dfs(0)
             
