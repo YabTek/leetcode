@@ -2,7 +2,11 @@ class Solution:
     def equationsPossible(self, equations: List[str]) -> bool:
         ans = True
         n = len(equations)
-        parent = {chr(i+97) :  chr(i+97) for i in range(26)}
+        parent = {}
+        
+        for i in range(26):
+            char = chr(i + 97)
+            parent[char] = char
         
         def find(x):
             if x != parent[x]:
