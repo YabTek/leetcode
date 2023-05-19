@@ -1,22 +1,32 @@
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        graph = defaultdict(list)
-        visited = set([source])
-        stk = [source]
+        parent = {i : i for i in range(n)}
+        
+        def find(x):
+            
+            if x != parent[x]:
+                parent[x] = find(parent[x])
+            return parent[x]
+        
+        def union(x,y):
+            xrep = find(x)
+            yrep = find(y)
+            
+            if xrep == yrep:
+                return
+            parent[xrep] = yrep
+            
+        def isConnected(x,y):
+            return find(x) == find(y)
+            
         
         for a,b in edges:
-            graph[a].append(b)
-            graph[b].append(a)
+            union(a,b)
+        return isConnected(source,destination)
+            
         
+            
         
-        while stk:
-            node = stk.pop()
-            if node == destination:
-                return True
-            for neighbour in graph[node]:
-                if neighbour not in visited:
-                    stk.append(neighbour)
-                    visited.add(neighbour)
-        return False
-
+            
+        
        
