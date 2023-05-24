@@ -3,10 +3,6 @@ class Solution:
         
         if k < numOnes:
             return k
-        
-        if numOnes >= k:
-            return numOnes
-       
         elif numOnes + numZeros >= k:
             return numOnes
         else:
