@@ -1,14 +1,15 @@
 class Solution:
     def tribonacci(self, n: int) -> int:
-        d = {}
-        def tribo(n):
-            if  n <= 1:
-                d[n] = n
-            if n == 2:
-                d[n] = 1
-            if n not in d:
-                d[n] = tribo(n-1) + tribo(n-2) + tribo(n-3)
-            return d[n]
+        if n <= 1:
+            return n
         
-        return tribo(n)
+        dp = [0] * (n+1)
         
+        dp[0] = 0
+        dp[1] = 1
+        dp[2] = 1
+        
+        for i in range(3,n+1):
+            dp[i] = dp[i-1] + dp[i-2] + dp[i-3]
+            
+        return dp[-1]
