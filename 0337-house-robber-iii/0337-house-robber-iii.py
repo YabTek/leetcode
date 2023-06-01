@@ -6,12 +6,9 @@
 #         self.right = right
 class Solution:
     def rob(self, root: Optional[TreeNode]) -> int:
-        cache = {}
         
+        @cache
         def dp(node,flag):
-            
-            if (node,flag) in cache:
-                return cache[(node,flag)]
             
             if not node:
                 return 0
@@ -19,14 +16,8 @@ class Solution:
             if flag:
                 option1 = node.val + dp(node.left,False) + dp(node.right,False)
                 option2 = dp(node.left,True) + dp(node.right,True)
-                cache[(node,flag)] = max(option1, option2)
-                return cache[(node,flag)]
+                return max(option1, option2)
             
-            cache[(node,flag)] = dp(node.left,True) + dp(node.right,True)
-            return cache[(node,flag)]
-
-            
+            return dp(node.left,True) + dp(node.right,True)
                 
-                
-                
-        return dp(root, True)
+        return max(dp(root, True),dp(root,False))
