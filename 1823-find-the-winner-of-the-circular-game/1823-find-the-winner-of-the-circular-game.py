@@ -1,14 +1,11 @@
 class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
-        arr = [i for i in range(1,n+1)]
-        idx = 0
-        
-        while True:
-            if len(arr) == 1:
-                break
-            idx = (idx+k-1) % len(arr)
-            arr.pop(idx)
-            
-        return arr[0]
-            
+        ans = 0
+
+        for i in range(2, n + 1):
+            ans = (ans + k) % i
+
+        return ans + 1
+
+
         
