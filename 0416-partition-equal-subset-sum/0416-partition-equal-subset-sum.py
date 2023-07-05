@@ -17,9 +17,9 @@ class Solution:
             if (i, target) in memo:
                 return memo[(i, target)]
 
-            memo[(i, target)] = dp(i-1, target - nums[i - 1]) or dp(i - 1, target)
+            memo[(i, target)] = dp(i-1, target - nums[i]) or dp(i - 1, target)
 
             
             return memo[(i, target)] 
 
-        return dp(len(nums), target)
+        return dp(len(nums)-1, target)
