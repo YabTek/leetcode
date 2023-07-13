@@ -5,7 +5,6 @@ class Solution:
         
         def dp(n):
             if n <= 1:
-                memo[n] = n
                 return n
             if n not in memo:
                 if n % 2 == 0:
@@ -15,12 +14,10 @@ class Solution:
                     
             return memo[n]
             
-        dp(n)
-        for i in range(n):
-            if i not in memo:
-                dp(i)
+       
+        for i in range(n+1):
+            ans = max(ans,dp(i))
                 
-        return max(memo.values())
-    
+        return ans
             
        
