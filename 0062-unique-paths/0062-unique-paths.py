@@ -1,15 +1,29 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        def dp(i,j):
-            if i == m-1 and j == n-1:
-                return 1
-            if i < 0 or i > m-1 or j < 0 or j > n-1:
-                return 0
-            if (i,j) not in d:
-                d[(i,j)] = dp(i+1,j) + dp(i,j+1)
+        
+        #top-down
+        #@cache
+        #def dp(row,col):
+            #if row == 0 and col == 0:
+                #return 1
+            #if row < 0 or col < 0:
+                #return 0
+            
+           # return dp(row-1,col) + dp(row,col-1)
                 
-            return d[(i,j)]
+            
+        #return dp(m-1,n-1)
         
-        d = {}
-        return dp(0,0)   
+        #bottom-up
+        dp = [[0 for _ in range(n)] for _ in range(m)]
+        dp[0][0] = 1
         
+        for row in range(m):
+            for col in range(n):
+                if row <= 0 or col <= 0:
+                    dp[row][col] = 1
+                else:
+                    dp[row][col] += dp[row-1][col] + dp[row][col-1]
+                        
+        return dp[m-1][n-1]
+       
