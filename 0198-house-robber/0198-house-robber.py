@@ -21,7 +21,7 @@ class Solution:
         if n == 1:
             return nums[0]
         
-        dp = [nums[i] for i in range(n)]
+        dp = nums
         dp[1] = max(dp[0],dp[1])
         
         
