@@ -1,12 +1,18 @@
-class ThroneInheritance:
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left.;
+#         self.right = right
 
+class ThroneInheritance:
+    
     def __init__(self, kingName: str):
         self.graph = defaultdict(list)
         self.kingName = kingName
         self.visited = set()
+        
     def birth(self, parentName: str, childName: str) -> None:
-        self.graph[parentName].append(childName)
-
+        self.graph[parentName].append(childName) 
     def death(self, name: str) -> None:
         self.visited.add(name)
         
