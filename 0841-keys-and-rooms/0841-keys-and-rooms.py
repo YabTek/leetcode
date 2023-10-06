@@ -1,22 +1,24 @@
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
-        queue = deque([0])
-        visited = set([0])
+        graph = defaultdict(list)
         
-        while queue:
-            node = queue.popleft()
+        for i in range(len(rooms)):
+            graph[i] = rooms[i]
             
-            for keys in rooms[node]:
-                if keys not in visited:
-                    queue.append(keys)
-                    visited.add(keys)
-        
+        def dfs(node):
+            visited.add(node)
+            
+            for neighbour in graph[node]:
+                if neighbour not in visited:
+                    visited.add(neighbour)
+                    dfs(neighbour)
+                    
+        visited = set()
+        dfs(0)
         for i in range(len(rooms)):
             if i not in visited:
                 return False
-            
         return True
                     
                 
-            
         
