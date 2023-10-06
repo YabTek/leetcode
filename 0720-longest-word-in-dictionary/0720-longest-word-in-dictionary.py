@@ -18,7 +18,6 @@ class Solution:
             
         
         for word in words:
-            if len(word) < len(ans): continue
             cur = root
             
             for char in word:
