@@ -2,7 +2,7 @@ class Solution:
     def checkIfPrerequisite(self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
         n = len(queries)
         ans = [False] * n
-        queue = deque()
+        heap = []
         graph = defaultdict(list)
         incoming = defaultdict(int)
         order = {i : set() for i in range(numCourses) }
@@ -13,11 +13,11 @@ class Solution:
         
         for i in range(numCourses):
             if incoming[i] == 0:
-                queue.append(i)
+                heapq.heappush(heap,i)
         
                 
-        while queue:
-            node = queue.popleft()
+        while heap:
+            node = heapq.heappop(heap)
 
             for neighbour in graph[node]:
                 incoming[neighbour] -= 1
@@ -25,7 +25,7 @@ class Solution:
                 order[neighbour] |= ((order[node]).union({node}))
                 
                 if incoming[neighbour]  == 0:
-                    queue.append(neighbour)
+                    heapq.heappush(heap,neighbour)
         
         for i in range(n):
             if queries[i][0] in order[queries[i][1]]:
