@@ -11,9 +11,7 @@ class Solution:
         
         while heap:
             cur_time, cur_node = heapq.heappop(heap)
-            
-            if cur_time > time[cur_node]:
-                continue
+        
                 
             for neighbour, weight in graph[cur_node]:
                 new_time = cur_time + weight
