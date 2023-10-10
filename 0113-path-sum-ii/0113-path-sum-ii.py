@@ -15,10 +15,9 @@ class Solution:
 
             if not node.left and not node.right and cur_sum == targetSum:  
                     ans.append(list(cur_path))
-            else:
-                dfs(node.left, cur_path, cur_sum)
-                dfs(node.right, cur_path, cur_sum)
-
+           
+            dfs(node.left, cur_path, cur_sum)
+            dfs(node.right, cur_path, cur_sum)
             cur_path.pop()  
 
         ans = []
