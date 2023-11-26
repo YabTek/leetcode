@@ -1,12 +1,21 @@
 class Solution:
     def maximumPopulation(self, logs: List[List[int]]) -> int:
-        d = defaultdict(int)
+        d = [0] * 101
         
         for a,b in logs:
-            for i in range(a,b):
-                d[i] += 1
-       
-        sorted_ = sorted(d.items(), key=lambda x: (-x[1], x[0]))
-      
-        return sorted_[0][0]
+            d[a-1950] += 1
+            d[b-1950] -= 1
+            
+        max_ = 0
+        sum_ = 0
+        ans = 0
         
+        for i in range(len(d)):
+            sum_ += d[i]
+            if sum_ > max_:
+                max_ = sum_
+                ans = i
+                
+        return 1950 + ans
+                
+      
