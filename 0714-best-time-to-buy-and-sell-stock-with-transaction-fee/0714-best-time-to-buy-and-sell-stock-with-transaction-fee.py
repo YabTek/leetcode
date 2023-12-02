@@ -3,8 +3,8 @@ class Solution:
         buy = [inf] * len(prices)
         dp = [0]*len(prices)
         
-        buy[0] = min(buy[0],prices[0]-dp[0])
-        dp[0] = max(dp[0],prices[0]-buy[0]-fee)
+        buy[0] = prices[0]
+        dp[0] = 0
         
         for i in range(1,len(prices)):
             buy[i] = min(buy[i-1],prices[i]-dp[i-1])
