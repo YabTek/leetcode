@@ -9,19 +9,23 @@ class Solution:
             return x
 
         def union(x, y):
+            nonlocal ans
+            
             xrep = representative(x)
             yrep = representative(y)
             
             if xrep == yrep:
-                return [x,y]
+                ans = [x,y]
             self.rep[yrep] = xrep
+            
+            return ans
 
-        ans = 0
+
+        ans = []
         
         for a,b in edges:
-            ans = union(a,b)
-            if ans:
-                return ans
+            union(a,b)
+            
             
         return ans
 
