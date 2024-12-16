@@ -4,17 +4,18 @@ class Solution:
         ans = [0] * len(nums)
         
         for i, num in enumerate(nums):
-            heapq.heappush(heap, (num, i))
+            heappush(heap, (num, i))
         
         while k:
             num, i = heapq.heappop(heap)
-            heapq.heappush(heap, (multiplier * num, i))     
+            new_num = multiplier * num
+            
+            nums[i] = new_num
+            heapq.heappush(heap, (new_num, i))     
             k -= 1
+       
             
-        for num, i in heap:
-            ans[i] = num
-            
-        return ans
+        return nums
             
         
         
