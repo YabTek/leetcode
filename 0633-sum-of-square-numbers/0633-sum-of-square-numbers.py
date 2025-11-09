@@ -1,26 +1,19 @@
 class Solution:
     def judgeSquareSum(self, c: int) -> bool:
-        left = 0
-        right = int(math.sqrt(c))
-        
-        if c == 0:
-            return True
+        i = 0
+        j = int(sqrt(c))
 
-        while left < right:
-            if 2*(left**2) == c:
-                return True
-            elif 2*(right**2) == c:
-                return True
-            elif (left**2) + (right**2) < c:
-                left += 1
-            elif (left**2) + (right**2) > c:
-                right -= 1
+        while i <= j:
+            tot = i**2 + j**2
+            if tot < c:
+                i += 1
+            elif tot > c:
+                j -= 1
             else:
                 return True
-            
+
         return False
-                
-                
-            
-            
+        
+        
+
         
