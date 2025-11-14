@@ -1,21 +1,27 @@
 class Solution:
     def dividePlayers(self, skill: List[int]) -> int:
+        i = 0
+        j = len(skill) - 1
         skill.sort()
-        
-        left = 0
-        right = len(skill) - 1
-        chemistry = 0
-        total = skill[left] + skill[right]
-        
-        while left < right:
-            if skill[left] + skill[right] != total:
+        prev_tot = skill[i] + skill[j]
+        ans = 0
+
+        while i < j:
+            left = skill[i]
+            right = skill[j]
+            tot = left + right
+
+            if tot != prev_tot:
                 return -1
-            chemistry += skill[left] * skill[right]
-            left += 1
-            right -= 1
-            
-        return  chemistry
-            
-            
-            
+            ans += left * right
+
+            i += 1
+            j -= 1
+
+        return ans
+
+
+
+
+
         
