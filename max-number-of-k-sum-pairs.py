@@ -1,21 +1,21 @@
 class Solution:
-    def maxOperations(self, nums: list[int], k: int) -> int:
-        
+    def maxOperations(self, nums: List[int], k: int) -> int:
         nums.sort()
-        operation = 0
-        to_right = 0
-        to_left = len(nums)-1
-      
-        while to_right < to_left:
-            if nums[to_right] +nums[to_left]<k:
+        i = 0
+        j = len(nums) - 1
+        ans = 0
 
-                to_right+=1
-            elif nums[to_right] +nums[to_left]==k:
-                operation +=1
-                to_right+=1
-                to_left-=1
-         
-          
+        while i < j:
+            tot = nums[i] + nums[j]
+            if tot < k:
+                i += 1
+            elif tot > k:
+                j -= 1
             else:
-                to_left-=1
-        return operation
+                ans += 1
+                i += 1
+                j -= 1
+
+        return ans
+
+        
